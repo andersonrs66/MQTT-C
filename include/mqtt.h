@@ -43,6 +43,15 @@ extern "C" {
 #include <mqtt_pal.h>
 #endif /* MQTT_PAL_FILE */
 
+#ifndef PACKED
+#ifdef __CC_ARM
+#define PACKED __attribute__((packed))
+#endif
+#elif __GNUC__
+#define PACKED __attribute__((packed))
+#endif
+#endif
+
 /**
  * @file
  * @brief Declares all the MQTT-C functions and datastructures.
@@ -927,7 +936,7 @@ enum MQTTQueuedMessageState {
  * @brief A message in a mqtt_message_queue.
  * @ingroup details
  */
-struct mqtt_queued_message {
+struct PACKED mqtt_queued_message {
     /** @brief A pointer to the start of the message. */
     uint8_t *start;
 
