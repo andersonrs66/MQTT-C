@@ -46,11 +46,10 @@ extern "C" {
 #ifndef PACKED
 #ifdef __CC_ARM
 #define PACKED __attribute__((packed))
-#endif
 #elif __GNUC__
 #define PACKED __attribute__((packed))
 #endif
-#endif
+#endif // PACKED
 
 /**
  * @file
